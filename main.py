@@ -622,7 +622,6 @@ def callback(call):
 # ==========================================
 
 keep_alive()
+print("Bot Started Successfully")
 
-print("Bot Running Successfully...")
-
-bot.infinity_polling()
+bot.infinity_polling(skip_pending=True)
