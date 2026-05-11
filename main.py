@@ -489,44 +489,6 @@ def callback(call):
             reply_markup=markup
         )
 
-# PAYMENT DONE
-elif data[0] == "paid":
-
-    product_name = data[1]
-    duration = data[2]
-
-    bot.send_message(
-        call.message.chat.id,
-        f"✅ Payment Request Submitted\n\n"
-        f"📦 Product: {product_name}\n"
-        f"⏳ Duration: {duration}\n\n"
-        f"Admin payment verify karega."
-    )
-{duration}
-
-🔑 YOUR KEY:
-{key}
-
-📨 API RESPONSE:
-{result}
-
-⚠️ Do Not Share Your Key
-"""
-
-QR_FILE_ID = "AgACAgUAAxkBAAM..."
-
-bot.send_photo(
-    chat_id=call.message.chat.id,
-    photo=QR_FILE_ID,
-    caption=caption,
-    reply_markup=markup
-)
-
-# =================================
-# AFTER PAYMENT
-# =================================
-if data[0] == "paid":
-# =================================
 # AFTER PAYMENT
 # =================================
 if data[0] == "paid":
