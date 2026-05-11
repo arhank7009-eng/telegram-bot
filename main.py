@@ -46,7 +46,6 @@ bot = TeleBot(BOT_TOKEN)
 API_URL = "https://adminpanels.shop/api/reseller_v1.php"
 
 API_KEY = "973a75c41668a85a7f8c920b574d7930"
-
 # ==========================================
 # PRODUCTS
 # ==========================================
@@ -117,6 +116,98 @@ products = {
         }
     },
 
+    "HG CHEATS FF ROOT + NONROOT": {
+        "pid": "65",
+
+        "durations": {
+            "1 Day Root + Nonroot": 100,
+            "7 Days Root + Nonroot": 350,
+            "10 Days Root + Nonroot": 550,
+            "30 Days Root + Nonroot": 1300
+        },
+
+        "keys": {
+            "1 Day Root + Nonroot": [
+                "HG-1D-001"
+            ],
+
+            "7 Days Root + Nonroot": [
+                "HG-7D-001"
+            ],
+
+            "10 Days Root + Nonroot": [
+                "HG-10D-001"
+            ],
+
+            "30 Days Root + Nonroot": [
+                "HG-30D-001"
+            ]
+        }
+    },
+
+    "PATO TEAM FF NONROOT + ROOT": {
+        "pid": "54",
+
+        "durations": {
+            "3 Days Safe + Brutal": 150,
+            "7 Days Normal": 320,
+            "7 Days Brutal": 450,
+            "15 Days": 700,
+            "30 Days": 1400
+        },
+
+        "keys": {
+            "3 Days Safe + Brutal": [
+                "PATO-3D-001"
+            ],
+
+            "7 Days Normal": [
+                "PATO-7D-001"
+            ],
+
+            "7 Days Brutal": [
+                "PATO-BRUTAL-001"
+            ],
+
+            "15 Days": [
+                "PATO-15D-001"
+            ],
+
+            "30 Days": [
+                "PATO-30D-001"
+            ]
+        }
+    },
+
+    "BR MOD FF ROOT + VPHONE": {
+        "pid": "67",
+
+        "durations": {
+            "1 Day": 100,
+            "7 Days": 350,
+            "15 Days": 700,
+            "30 Days": 1500
+        },
+
+        "keys": {
+            "1 Day": [
+                "BRROOT-1D-001"
+            ],
+
+            "7 Days": [
+                "BRROOT-7D-001"
+            ],
+
+            "15 Days": [
+                "BRROOT-15D-001"
+            ],
+
+            "30 Days": [
+                "BRROOT-30D-001"
+            ]
+        }
+    },
+
     "BR MOD FF PC VERSION": {
         "pid": "49",
 
@@ -156,6 +247,83 @@ products = {
         }
     },
 
+    "DRIPCLIENT 8BP NONROOT": {
+        "pid": "59",
+
+        "durations": {
+            "1 Day": 90,
+            "7 Days": 350,
+            "30 Days": 1100
+        },
+
+        "keys": {
+            "1 Day": [
+                "8BP-1D-001"
+            ],
+
+            "7 Days": [
+                "8BP-7D-001"
+            ],
+
+            "30 Days": [
+                "8BP-30D-001"
+            ]
+        }
+    },
+
+    "DRIPCLIENT FF PC AIMKILL": {
+        "pid": "44",
+
+        "durations": {
+            "1 Day PC AIMKILL": 150,
+            "7 Days PC AIMKILL": 700,
+            "15 Days PC AIMKILL": 1200,
+            "30 Days PC AIMKILL": 2200
+        },
+
+        "keys": {
+            "1 Day PC AIMKILL": [
+                "AIMKILL-1D-001"
+            ],
+
+            "7 Days PC AIMKILL": [
+                "AIMKILL-7D-001"
+            ],
+
+            "15 Days PC AIMKILL": [
+                "AIMKILL-15D-001"
+            ],
+
+            "30 Days PC AIMKILL": [
+                "AIMKILL-30D-001"
+            ]
+        }
+    },
+
+    "DRIPCLIENT ROOT FF": {
+        "pid": "63",
+
+        "durations": {
+            "1 Day ROOT": 100,
+            "7 Days ROOT": 450,
+            "30 Days ROOT": 1400
+        },
+
+        "keys": {
+            "1 Day ROOT": [
+                "ROOT-1D-001"
+            ],
+
+            "7 Days ROOT": [
+                "ROOT-7D-001"
+            ],
+
+            "30 Days ROOT": [
+                "ROOT-30D-001"
+            ]
+        }
+    },
+
     "IOS FF PANEL ALL": {
         "pid": "58",
 
@@ -178,9 +346,37 @@ products = {
                 "IOS-30D-001"
             ]
         }
+    },
+
+    "XYZ CHEATS FF ROOT + VPHONE": {
+        "pid": "66",
+
+        "durations": {
+            "3 Days": 200,
+            "7 Days": 500,
+            "15 Days": 900,
+            "30 Days": 1800
+        },
+
+        "keys": {
+            "3 Days": [
+                "XYZ-3D-001"
+            ],
+
+            "7 Days": [
+                "XYZ-7D-001"
+            ],
+
+            "15 Days": [
+                "XYZ-15D-001"
+            ],
+
+            "30 Days": [
+                "XYZ-30D-001"
+            ]
+        }
     }
 }
-
 # ==========================================
 # START COMMAND
 # ==========================================
