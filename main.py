@@ -427,7 +427,6 @@ def buy_product(message):
         "📦 Select Product",
         reply_markup=markup
     )
-
 # ==========================================
 # CALLBACKS
 # ==========================================
@@ -437,10 +436,7 @@ def callback(call):
 
     data = call.data.split("|")
 
-    # ======================================
     # PRODUCT SELECT
-    # ======================================
-
     if data[0] == "product":
 
         product_name = data[1]
@@ -449,24 +445,21 @@ def callback(call):
 
         for duration, price in products[product_name]["durations"].items():
 
-            markup.add(
-                types.InlineKeyboardButton(
-                    text=f"{duration} - ₹{price}",
-                    callback_data=f"buy|{product_name}|{duration}"
-                )
+            btn = types.InlineKeyboardButton(
+                text=f"{duration} - ₹{price}",
+                callback_data=f"buy|{product_name}|{duration}"
             )
 
+            markup.add(btn)
+
         bot.edit_message_text(
-            f"📦 Select Duration For\n\n{product_name}",
-            call.message.chat.id,
-            call.message.message_id,
+            text=f"📦 Select Duration For\n\n{product_name}",
+            chat_id=call.message.chat.id,
+            message_id=call.message.message_id,
             reply_markup=markup
         )
 
-    # ======================================
     # BUY PRODUCT
-    # ======================================
-
     elif data[0] == "buy":
 
         product_name = data[1]
@@ -476,37 +469,35 @@ def callback(call):
 
         markup = types.InlineKeyboardMarkup()
 
-        markup.add(
-            types.InlineKeyboardButton(
-                text="✅ I Paid",
-                callback_data=f"paid|{product_name}|{duration}"
-            )
+        pay_btn = types.InlineKeyboardButton(
+            text="✅ I Paid",
+            callback_data=f"paid|{product_name}|{duration}"
         )
 
+        markup.add(pay_btn)
+
         bot.edit_message_text(
+            text=
             f"💸 Payment Details\n\n"
             f"📦 Product: {product_name}\n"
             f"⏳ Duration: {duration}\n"
             f"💰 Price: ₹{price}\n\n"
             f"🪙 UPI ID: yourupi@paytm\n\n"
             f"Payment karne ke baad niche button dabao 👇",
-            call.message.chat.id,
-            call.message.message_id,
+            chat_id=call.message.chat.id,
+            message_id=call.message.message_id,
             reply_markup=markup
         )
 
-    # ======================================
     # PAYMENT DONE
-    # ======================================
-
     elif data[0] == "paid":
 
         product_name = data[1]
         duration = data[2]
 
         bot.answer_callback_query(
-            call.id,
-            "✅ Payment Submitted"
+            callback_query_id=call.id,
+            text="✅ Payment Submitted"
         )
 
         bot.send_message(
