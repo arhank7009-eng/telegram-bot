@@ -79,7 +79,7 @@ products = {
         "PRIME-10D-001"
     ]
 }
-    },
+    }
 
     "DRIPCLIENT NONROOT FF": {
         "pid": "62",
