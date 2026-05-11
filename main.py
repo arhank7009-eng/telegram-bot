@@ -54,32 +54,31 @@ products = {
 
     "PRIME HOOK FF NONROOT": {
         "pid": "48",
+"durations": {
+    "1 Day Nonroot": 70,
+    "3 Days Nonroot": 130,
+    "7 Days Nonroot": 280,
+    "10 Days Nonroot": 410
+},
 
-        "durations": {
-            "1 Day Nonroot": 70,
-            "3 Days Nonroot": 130,
-            "7 Days Nonroot": 280,
-            "10 Days Nonroot": 410
-        },
+"keys": {
+    "1 Day Nonroot": [
+        "PRIME-1D-001",
+        "PRIME-1D-002"
+    ],
 
-        "keys": {
-            "1 Day Nonroot": [
-                "PRIME-1D-001",
-                "PRIME-1D-002"
-            ],
+    "3 Days Nonroot": [
+        "PRIME-3D-001"
+    ],
 
-            "3 Days Nonroot": [
-                "PRIME-3D-001"
-            ],
+    "7 Days Nonroot": [
+        "PRIME-7D-001"
+    ],
 
-            "7 Days Nonroot": [
-                "PRIME-7D-001"
-            ],
-
-            "10 Days Nonroot": [
-                "PRIME-10D-001"
-            ]
-        }
+    "10 Days Nonroot": [
+        "PRIME-10D-001"
+    ]
+}
     },
 
     "DRIPCLIENT NONROOT FF": {
