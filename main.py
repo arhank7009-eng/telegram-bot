@@ -504,7 +504,7 @@ def callback(call):
 
 bot.send_photo(
     call.message.chat.id,
-    ""AgACAgUAAxkBAAMeagGu13abfISSIAkFjOA39NeNR-AAAnUPaxt25gFUcV--k8iVaYMBAAMCAAN5AAM7BA"",
+    "AgACAgUAAxkBAAMeagGu13abfISSIAkFjOA39NeNR-AAAnUPaxt25gFUcV--k8iVaYMBAAMCAAN5AAM7BA",
     caption=caption,
     reply_markup=markup
 )
