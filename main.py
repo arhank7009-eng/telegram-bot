@@ -505,7 +505,6 @@ def callback(call):
 QR_FILE_ID = "AgACAgUAAxkBAAM..."
 
 bot.send_photo(
-bot.send_photo(
     chat_id=call.message.chat.id,
     photo=QR_FILE_ID,
     caption=caption,
