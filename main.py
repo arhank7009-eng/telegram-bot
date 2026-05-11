@@ -484,9 +484,7 @@ def callback(call):
             )
         )
 
-        bot.send_message(
-            call.message.chat.id,
-            f"""
+        caption = f"""
 🛒 PRODUCT DETAILS
 
 📦 Product:
@@ -502,9 +500,14 @@ def callback(call):
 {UPI_ID}
 
 ✅ Payment karne ke baad niche button dabao.
-""",
-            reply_markup=markup
-        )
+"""
+
+bot.send_photo(
+    call.message.chat.id,
+    "YAHAN_FILE_ID",
+    caption=caption,
+    reply_markup=markup
+)
 
     # ======================================
     # AFTER PAYMENT
