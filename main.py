@@ -490,7 +490,7 @@ def callback(call):
         )
 
     # PAYMENT DONE
-    elif data[0] == "paid":
+    if data[0] == "paid":
 
         product_name = data[1]
         duration = data[2]
@@ -538,13 +538,11 @@ bot.send_photo(
 # =================================
 # AFTER PAYMENT
 # =================================
-
-elif data[0] == "paid":
-
+if data[0] == "paid":
 # =================================
 # AFTER PAYMENT
 # =================================
-elif data[0] == "paid":
+if data[0] == "paid":
     product_name = data[1]
 
     duration = data[2]
