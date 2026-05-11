@@ -502,12 +502,13 @@ def callback(call):
 ⚠️ Do Not Share Your Key
 """
 
-QR_FILE_ID = "AgACAgUAAxkBAAMeagGu13abfISSIAkFjOA39NeNR-AAAnUPaxt25gFUcV--k8iVaYMBAAMCAAN5AAM7BA"
+QR_FILE_ID = "AgACAgUAAxkBAAM..."
 
 bot.send_photo(
     chat_id=call.message.chat.id,
     photo=QR_FILE_ID,
-    caption=caption
+    caption=caption,
+    reply_markup=markup
 )
     # ======================================
     # AFTER PAYMENT
