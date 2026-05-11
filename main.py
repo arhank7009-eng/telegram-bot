@@ -470,7 +470,6 @@ def callback(call):
     elif data[0] == "buy":
 
         product_name = data[1]
-
         duration = data[2]
 
         price = products[product_name]["durations"][duration]
@@ -482,6 +481,40 @@ def callback(call):
                 text="✅ I Paid",
                 callback_data=f"paid|{product_name}|{duration}"
             )
+        )
+
+        bot.edit_message_text(
+            f"💸 Payment Details\n\n"
+            f"📦 Product: {product_name}\n"
+            f"⏳ Duration: {duration}\n"
+            f"💰 Price: ₹{price}\n\n"
+            f"🪙 UPI ID: yourupi@paytm\n\n"
+            f"Payment karne ke baad niche button dabao 👇",
+            call.message.chat.id,
+            call.message.message_id,
+            reply_markup=markup
+        )
+
+    # ======================================
+    # PAYMENT DONE
+    # ======================================
+
+    elif data[0] == "paid":
+
+        product_name = data[1]
+        duration = data[2]
+
+        bot.answer_callback_query(
+            call.id,
+            "✅ Payment Submitted"
+        )
+
+        bot.send_message(
+            call.message.chat.id,
+            f"✅ Payment Request Submitted\n\n"
+            f"📦 Product: {product_name}\n"
+            f"⏳ Duration: {duration}\n\n"
+            f"Admin payment verify karega."
         )
 
         caption = f"""
