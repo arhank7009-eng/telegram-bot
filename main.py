@@ -515,9 +515,7 @@ bot.send_photo(
 # =================================
 # AFTER PAYMENT
 # =================================
-
 elif data[0] == "paid":
-
     product_name = data[1]
 
     duration = data[2]
