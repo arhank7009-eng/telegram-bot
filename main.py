@@ -485,28 +485,29 @@ def callback(call):
         )
 
         caption = f"""
-🛒 PRODUCT DETAILS
+✅ PAYMENT SUCCESSFUL
 
 📦 Product:
 {product_name}
 
-⏳ Duration:
+⌛ Duration:
 {duration}
 
-💰 Price:
-₹{price}
+🔑 YOUR KEY:
+{key}
 
-💳 UPI:
-{UPI_ID}
+📨 API RESPONSE:
+{result}
 
-✅ Payment karne ke baad niche button dabao.
+⚠️ Do Not Share Your Key
 """
 
+QR_FILE_ID = "AgACAgUAAxkBAAMeagGu13abfISSIAkFjOA39NeNR-AAAnUPaxt25gFUcV--k8iVaYMBAAMCAAN5AAM7BA"
+
 bot.send_photo(
-    call.message.chat.id,
-    "AgACAgUAAxkBAAMeagGu13abfISSIAkFjOA39NeNR-AAAnUPaxt25gFUcV--k8iVaYMBAAMCAAN5AAM7BA",
-    caption=caption,
-    reply_markup=markup
+    chat_id=call.message.chat.id,
+    photo=QR_FILE_ID,
+    caption=caption
 )
     # ======================================
     # AFTER PAYMENT
