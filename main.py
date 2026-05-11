@@ -489,32 +489,19 @@ def callback(call):
             reply_markup=markup
         )
 
-    # PAYMENT DONE
-    elif data[0] == "paid":
+# PAYMENT DONE
+elif data[0] == "paid":
 
-        product_name = data[1]
-        duration = data[2]
+    product_name = data[1]
+    duration = data[2]
 
-        bot.answer_callback_query(
-            callback_query_id=call.id,
-            text="✅ Payment Submitted"
-        )
-
-        bot.send_message(
-    call.message.chat.id,
-    f"✅ Payment Request Submitted\n\n"
-    f"📦 Product: {product_name}\n"
-    f"⏳ Duration: {duration}\n\n"
-    f"Admin payment verify karega."
-)
-
-        caption = f"""
-✅ PAYMENT SUCCESSFUL
-
-📦 Product:
-{product_name}
-
-⌛ Duration:
+    bot.send_message(
+        call.message.chat.id,
+        f"✅ Payment Request Submitted\n\n"
+        f"📦 Product: {product_name}\n"
+        f"⏳ Duration: {duration}\n\n"
+        f"Admin payment verify karega."
+    )
 {duration}
 
 🔑 YOUR KEY:
