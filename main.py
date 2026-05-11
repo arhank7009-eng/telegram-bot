@@ -1,4 +1,4 @@
-# ==========================================
+8# ==========================================
 # TELEGRAM AUTO RESELLER BOT
 # FULL API + AUTO KEY VERSION
 # RENDER + GITHUB READY
@@ -504,7 +504,7 @@ def callback(call):
 
 bot.send_photo(
     call.message.chat.id,
-    "AgACAgUAAxkBAAMeagGu13abfISSIAkFjOA39NeNR-AAAnUPaxt25gFUcV--k8iVaYMBAAMCAAN5AAM7BA",
+    "YAHAN_NAYA_FILE_ID",
     caption=caption,
     reply_markup=markup
 )
