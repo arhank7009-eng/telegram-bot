@@ -505,34 +505,35 @@ def callback(call):
 QR_FILE_ID = "AgACAgUAAxkBAAM..."
 
 bot.send_photo(
+bot.send_photo(
     chat_id=call.message.chat.id,
     photo=QR_FILE_ID,
     caption=caption,
     reply_markup=markup
 )
-    # ======================================
-    # AFTER PAYMENT
-    # ======================================
 
-    elif data[0] == "paid":
+# =================================
+# AFTER PAYMENT
+# =================================
 
-        product_name = data[1]
+elif data[0] == "paid":
 
-        duration = data[2]
+    product_name = data[1]
 
-        pid = products[product_name]["pid"]
+    duration = data[2]
 
-        # ==================================
-        # API BUY REQUEST
-        # ==================================
+    pid = products[product_name]["pid"]
 
-        payload = {
-            "api_key": API_KEY,
-            "action": "buy",
-            "product_id": pid,
-            "duration": duration
-        }
+    # =================================
+    # API BUY REQUEST
+    # =================================
 
+    payload = {
+        "api_key": API_KEY,
+        "action": "buy",
+        "product_id": pid,
+        "duration": duration
+    }
         try:
 
             response = requests.post(
