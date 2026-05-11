@@ -490,7 +490,7 @@ def callback(call):
         )
 
     # PAYMENT DONE
-    if data[0] == "paid":
+    elif data[0] == "paid":
 
         product_name = data[1]
         duration = data[2]
