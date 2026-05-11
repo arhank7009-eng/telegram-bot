@@ -501,12 +501,12 @@ def callback(call):
         )
 
         bot.send_message(
-            call.message.chat.id,
-            f"✅ Payment Request Submitted\n\n"
-            f"📦 Product: {product_name}\n"
-            f"⏳ Duration: {duration}\n\n"
-            f"Admin payment verify karega."
-        )
+    call.message.chat.id,
+    f"✅ Payment Request Submitted\n\n"
+    f"📦 Product: {product_name}\n"
+    f"⏳ Duration: {duration}\n\n"
+    f"Admin payment verify karega."
+)
 
         caption = f"""
 ✅ PAYMENT SUCCESSFUL
