@@ -535,11 +535,10 @@ key = available_keys.pop(0)
 
         # ==============================
         # SEND TO USER
-        # ==============================
 
-        bot.send_message(
-            call.message.chat.id,
-            f"""
+bot.send_message(
+    call.message.chat.id,
+    f"""
 ✅ PAYMENT SUCCESSFUL
 
 📦 Product:
@@ -558,7 +557,7 @@ key = available_keys.pop(0)
 
 ⚠️ Do Not Share Your Key
 """
-        )
+)
 
         # ==============================
         # ADMIN LOG
