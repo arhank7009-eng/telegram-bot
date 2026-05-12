@@ -11,14 +11,14 @@ import requests
 # CONFIG
 # ==========================================
 
-BOT_TOKEN = "YOUR_BOT_TOKEN"
-ADMIN_ID = 123456789
+BOT_TOKEN = "8697358234:AAHx5aHgNn4u62Ukhupo_GbdctqWvBCDhQo"
+ADMIN_ID = 7762997996
 
-API_KEY = "YOUR_API_KEY"
+API_KEY = "7386f5665fea7a84983801e63db5ec7b"
 API_URL = "https://adminpanels.shop/api/reseller_v1.php"
 
 # QR IMAGE
-QR_IMAGE = "https://i.ibb.co/6bQxY5D/sample-qr.png"
+QR_IMAGE = "https://i.postimg.cc/DZSZmBGX/qr.png"
 
 # ==========================================
 # BOT START
