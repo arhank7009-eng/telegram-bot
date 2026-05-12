@@ -299,7 +299,7 @@ def callback(call):
 ₹{price}
 
 🪙 UPI ID:
-yourupiid@upi
+"8795734376@ybl"
 
 ⚠️ Pay And Click I PAID
 """
