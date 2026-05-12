@@ -1,430 +1,212 @@
-8# ==========================================
+# ==========================================
 # TELEGRAM AUTO RESELLER BOT
-# FULL API + AUTO KEY VERSION
-# RENDER + GITHUB READY
+# QR PAYMENT + AUTO KEY DELIVERY
 # ==========================================
 
-from telebot import TeleBot, types
-from flask import Flask
-from threading import Thread
+import telebot
+from telebot import types
 import requests
-import os
 
 # ==========================================
-# KEEP ALIVE FOR RENDER
+# CONFIG
 # ==========================================
 
-app = Flask('')
+BOT_TOKEN = "YOUR_BOT_TOKEN"
+ADMIN_ID = 123456789
 
-@app.route('/')
-def home():
-    return "Bot Running Successfully"
-
-def run():
-    app.run(host="0.0.0.0", port=10000)
-
-def keep_alive():
-    t = Thread(target=run)
-    t.start()
-
-# ==========================================
-# BOT CONFIG
-# ==========================================
-
-BOT_TOKEN = os.getenv("BOT_TOKEN") or "8697358234:AAHWxt4t7g6Jf-otiiDC1tU4yQUFnEiyPD4"
-
-ADMIN_ID = 7762997996
-
-UPI_ID = "8795734376@ybl"
-
-bot = TeleBot(BOT_TOKEN)
-
-# ==========================================
-# API CONFIG
-# ==========================================
-
+API_KEY = "YOUR_API_KEY"
 API_URL = "https://adminpanels.shop/api/reseller_v1.php"
 
-API_KEY = "973a75c41668a85a7f8c920b574d7930"
+# QR IMAGE
+QR_IMAGE = "https://i.ibb.co/6bQxY5D/sample-qr.png"
+
+# ==========================================
+# BOT START
+# ==========================================
+
+bot = telebot.TeleBot(BOT_TOKEN)
+
 # ==========================================
 # PRODUCTS
 # ==========================================
 
 products = {
 
-    "PRIME HOOK FF NONROOT": {
-        "pid": "48",
-"durations": {
-    "1 Day Nonroot": 70,
-    "3 Days Nonroot": 130,
-    "7 Days Nonroot": 280,
-    "10 Days Nonroot": 410
-},
-
-"keys": {
-    "1 Day Nonroot": [
-        "PRIME-1D-001",
-        "PRIME-1D-002"
-    ],
-
-    "3 Days Nonroot": [
-        "PRIME-3D-001"
-    ],
-
-    "7 Days Nonroot": [
-        "PRIME-7D-001"
-    ],
-"10 Days Nonroot": [
-        "PRIME-10D-001"
-    ]
-    }
-},
-
-    "DRIPCLIENT NONROOT FF": {
-        "pid": "62",
-
+    "BR MOD FF PC VERSION": {
+        "pid": "49",
         "durations": {
-            "1 Day NONROOT": 80,
-            "3 Days NONROOT": 150,
-            "7 Days NONROOT": 270,
-            "15 Days NONROOT": 650,
-            "30 Days NONROOT": 1200
-        },
-
-        "keys": {
-            "1 Day NONROOT": [
-                "DRIP-1D-001"
-            ],
-
-            "3 Days NONROOT": [
-                "DRIP-3D-001"
-            ],
-
-            "7 Days NONROOT": [
-                "DRIP-7D-001"
-            ],
-
-            "15 Days NONROOT": [
-                "DRIP-15D-001"
-            ],
-
-            "30 Days NONROOT": [
-                "DRIP-30D-001"
-            ]
-        }
-    },
-
-    "HG CHEATS FF ROOT + NONROOT": {
-        "pid": "65",
-
-        "durations": {
-            "1 Day Root + Nonroot": 100,
-            "7 Days Root + Nonroot": 350,
-            "10 Days Root + Nonroot": 550,
-            "30 Days Root + Nonroot": 1300
-        },
-
-        "keys": {
-            "1 Day Root + Nonroot": [
-                "HG-1D-001"
-            ],
-
-            "7 Days Root + Nonroot": [
-                "HG-7D-001"
-            ],
-
-            "10 Days Root + Nonroot": [
-                "HG-10D-001"
-            ],
-
-            "30 Days Root + Nonroot": [
-                "HG-30D-001"
-            ]
-        }
-    },
-
-    "PATO TEAM FF NONROOT + ROOT": {
-        "pid": "54",
-
-        "durations": {
-            "3 Days Safe + Brutal": 150,
-            "7 Days Normal": 320,
-            "7 Days Brutal": 450,
-            "15 Days": 700,
-            "30 Days": 1400
-        },
-
-        "keys": {
-            "3 Days Safe + Brutal": [
-                "PATO-3D-001"
-            ],
-
-            "7 Days Normal": [
-                "PATO-7D-001"
-            ],
-
-            "7 Days Brutal": [
-                "PATO-BRUTAL-001"
-            ],
-
-            "15 Days": [
-                "PATO-15D-001"
-            ],
-
-            "30 Days": [
-                "PATO-30D-001"
-            ]
+            "1 Day Pc Aim Silent": 100,
+            "1 Day Pc Bypass + Silent": 120,
+            "10 Days Pc Aim Silent": 450,
+            "10 Days Pc Bypass + Silent": 500,
+            "30 Days Pc Aim Silent": 1000,
+            "30 Days Pc Bypass + Silent": 1200
         }
     },
 
     "BR MOD FF ROOT + VPHONE": {
         "pid": "67",
-
         "durations": {
-            "1 Day": 100,
-            "7 Days": 350,
-            "15 Days": 700,
-            "30 Days": 1500
-        },
-
-        "keys": {
-            "1 Day": [
-                "BRROOT-1D-001"
-            ],
-
-            "7 Days": [
-                "BRROOT-7D-001"
-            ],
-
-            "15 Days": [
-                "BRROOT-15D-001"
-            ],
-
-            "30 Days": [
-                "BRROOT-30D-001"
-            ]
-        }
-    },
-
-    "BR MOD FF PC VERSION": {
-        "pid": "49",
-
-        "durations": {
-            "1 Day PC Aim Silent": 120,
-            "1 Day PC Bypass Silent": 150,
-            "10 Days PC Aim Silent": 700,
-            "10 Days PC Bypass Silent": 850,
-            "30 Days PC Aim Silent": 1800,
-            "30 Days PC Bypass Silent": 2200
-        },
-
-        "keys": {
-            "1 Day PC Aim Silent": [
-                "BRMOD-1D-001"
-            ],
-
-            "1 Day PC Bypass Silent": [
-                "BRMOD-BYPASS-001"
-            ],
-
-            "10 Days PC Aim Silent": [
-                "BRMOD-10D-001"
-            ],
-
-            "10 Days PC Bypass Silent": [
-                "BRMOD-10DB-001"
-            ],
-
-            "30 Days PC Aim Silent": [
-                "BRMOD-30D-001"
-            ],
-
-            "30 Days PC Bypass Silent": [
-                "BRMOD-30DB-001"
-            ]
+            "1 DaYs": 80,
+            "7 DaYs": 350,
+            "15 DaYs": 600,
+            "30 DaYs": 1000
         }
     },
 
     "DRIPCLIENT 8BP NONROOT": {
         "pid": "59",
-
         "durations": {
-            "1 Day": 90,
-            "7 Days": 350,
-            "30 Days": 1100
-        },
-
-        "keys": {
-            "1 Day": [
-                "8BP-1D-001"
-            ],
-
-            "7 Days": [
-                "8BP-7D-001"
-            ],
-
-            "30 Days": [
-                "8BP-30D-001"
-            ]
+            "1 DaYs": 100,
+            "7 DaYs": 400,
+            "30 DaYs": 1200
         }
     },
 
     "DRIPCLIENT FF PC AIMKILL": {
         "pid": "44",
-
         "durations": {
-            "1 Day PC AIMKILL": 150,
-            "7 Days PC AIMKILL": 700,
-            "15 Days PC AIMKILL": 1200,
-            "30 Days PC AIMKILL": 2200
-        },
+            "1 DaYS PC AIMKILL": 120,
+            "7 DaYS PC AIMKILL": 500,
+            "15 DaYS PC AIMKILL": 800,
+            "30 DaYS PC AIMKILL": 1500
+        }
+    },
 
-        "keys": {
-            "1 Day PC AIMKILL": [
-                "AIMKILL-1D-001"
-            ],
-
-            "7 Days PC AIMKILL": [
-                "AIMKILL-7D-001"
-            ],
-
-            "15 Days PC AIMKILL": [
-                "AIMKILL-15D-001"
-            ],
-
-            "30 Days PC AIMKILL": [
-                "AIMKILL-30D-001"
-            ]
+    "DRIPCLIENT NONROOT FF": {
+        "pid": "62",
+        "durations": {
+            "1 DaYS NONROOT": 80,
+            "3 DaYS NONROOT": 150,
+            "7 DaYS NONROOT": 300,
+            "15 DaYS NONROOT": 500,
+            "30 DaYS NONROOT": 900
         }
     },
 
     "DRIPCLIENT ROOT FF": {
         "pid": "63",
-
         "durations": {
-            "1 Day ROOT": 100,
-            "7 Days ROOT": 450,
-            "30 Days ROOT": 1400
-        },
-
-        "keys": {
-            "1 Day ROOT": [
-                "ROOT-1D-001"
-            ],
-
-            "7 Days ROOT": [
-                "ROOT-7D-001"
-            ],
-
-            "30 Days ROOT": [
-                "ROOT-30D-001"
-            ]
+            "1 DaYS ROOT": 100,
+            "7 DaYS ROOT": 350,
+            "30 DaYS ROOT": 1000
         }
     },
 
-    "IOS FF PANEL ALL": {
+    "FLUORITE IOS FF PANEL": {
         "pid": "58",
-
         "durations": {
-            "1 Day FluoRite FF": 250,
-            "7 Days FluoRite FF": 900,
-            "30 Days FluoRite FF": 2500
-        },
-
-        "keys": {
-            "1 Day FluoRite FF": [
-                "IOS-1D-001"
-            ],
-
-            "7 Days FluoRite FF": [
-                "IOS-7D-001"
-            ],
-
-            "30 Days FluoRite FF": [
-                "IOS-30D-001"
-            ]
+            "1 DAYs FluoRite FF": 200,
+            "7 DAYs FluoRite FF": 700,
+            "30 DAYs FluoRite FF": 2000,
+            "Esgin Gbox Certificate For iOs": 1500
         }
     },
 
-    "XYZ CHEATS FF ROOT + VPHONE": {
-        "pid": "66",
-
+    "HAXX-CKER PRO FF ROOT + VPHONE": {
+        "pid": "64",
         "durations": {
-            "3 Days": 200,
-            "7 Days": 500,
-            "15 Days": 900,
-            "30 Days": 1800
-        },
+            "10 DaYs": 600
+        }
+    },
 
-        "keys": {
-            "3 Days": [
-                "XYZ-3D-001"
-            ],
+    "HEX BLADE FF ROOT+VPHONE": {
+        "pid": "71",
+        "durations": {
+            "1 DaYs": 100,
+            "7 DaYs": 400,
+            "14 DaYs": 700,
+            "30 DaYs": 1300
+        }
+    },
 
-            "7 Days": [
-                "XYZ-7D-001"
-            ],
+    "HG CHEATS FF NONROOT+ROOT": {
+        "pid": "65",
+        "durations": {
+            "1 DaYs Root + Nonroot": 80,
+            "7 DaYs Root+Nonroot": 300,
+            "10 DaYs Root+Nonroot": 500,
+            "30 DaYs Root+Nonroot": 1200
+        }
+    },
 
-            "15 Days": [
-                "XYZ-15D-001"
-            ],
+    "MIGUL IPHONE IOS PANEL": {
+        "pid": "69",
+        "durations": {
+            "1 DaYs Basic": 200,
+            "1 DaYs PRO": 300,
+            "7 DaYs Basic": 700,
+            "7 DaYs PRO": 1000,
+            "30 DaYs Basic": 2000,
+            "30 DaYs PRO": 3000,
+            "Esgin Gbox CERTIFICATE": 1500
+        }
+    },
 
-            "30 Days": [
-                "XYZ-30D-001"
-            ]
+    "NEO STRIKE FF ROOT + VPHONE": {
+        "pid": "70",
+        "durations": {
+            "1 DaYs": 80,
+            "3 DaYs": 150,
+            "7 DaYs": 300,
+            "14 DaYs": 600
+        }
+    },
+
+    "PATO TEAM FF NONROOT + ROOT": {
+        "pid": "54",
+        "durations": {
+            "3 DaYs SaFe + Brutal": 150,
+            "7 DaYs": 300,
+            "7 DaYs BruTal": 350,
+            "15 DaYs": 700,
+            "30 DaYs": 1400
+        }
+    },
+
+    "PRIME HOOK FF NONROOT": {
+        "pid": "48",
+        "durations": {
+            "1 Days Nonroot": 70,
+            "3 Days Nonroot": 130,
+            "7 Days NonRoot": 250,
+            "10 Days Nonroot": 400
+        }
+    },
+
+    "XYZ CHEATS FF ROOT+VPHONE": {
+        "pid": "66",
+        "durations": {
+            "3 Days": 150,
+            "7 Days": 300,
+            "15 Days": 700,
+            "30 Days": 1400
         }
     }
 }
+
 # ==========================================
-# START COMMAND
+# START
 # ==========================================
 
 @bot.message_handler(commands=['start'])
 def start(message):
 
-    markup = types.ReplyKeyboardMarkup(resize_keyboard=True)
-
-    markup.add(
-        types.KeyboardButton("🛒 Buy Product")
-    )
-
-    bot.send_message(
-        message.chat.id,
-        """
-🔥 AUTO RESELLER BOT
-
-✅ Auto Product Buy
-✅ Instant Key Delivery
-✅ 24/7 Active
-
-Select Option Below
-""",
-        reply_markup=markup
-    )
-
-# ==========================================
-# BUY PRODUCT BUTTON
-# ==========================================
-
-@bot.message_handler(func=lambda m: m.text == "🛒 Buy Product")
-def buy_product(message):
-
     markup = types.InlineKeyboardMarkup()
 
-    for product in products:
+    btn = types.InlineKeyboardButton(
+        "🛒 BUY PRODUCTS",
+        callback_data="products"
+    )
 
-        markup.add(
-            types.InlineKeyboardButton(
-                text=product,
-                callback_data=f"product|{product}"
-            )
-        )
+    markup.add(btn)
 
     bot.send_message(
         message.chat.id,
-        "📦 Select Product",
+        "🔥 WELCOME TO AUTO RESELLER BOT 🔥",
         reply_markup=markup
     )
+
 # ==========================================
 # CALLBACKS
 # ==========================================
@@ -434,8 +216,35 @@ def callback(call):
 
     data = call.data.split("|")
 
-    # PRODUCT SELECT
-    if data[0] == "product":
+    # ======================================
+    # SHOW PRODUCTS
+    # ======================================
+
+    if call.data == "products":
+
+        markup = types.InlineKeyboardMarkup()
+
+        for product in products:
+
+            btn = types.InlineKeyboardButton(
+                product,
+                callback_data=f"product|{product}"
+            )
+
+            markup.add(btn)
+
+        bot.edit_message_text(
+            "📦 SELECT PRODUCT",
+            call.message.chat.id,
+            call.message.message_id,
+            reply_markup=markup
+        )
+
+    # ======================================
+    # SELECT PRODUCT
+    # ======================================
+
+    elif data[0] == "product":
 
         product_name = data[1]
 
@@ -444,20 +253,23 @@ def callback(call):
         for duration, price in products[product_name]["durations"].items():
 
             btn = types.InlineKeyboardButton(
-                text=f"{duration} - ₹{price}",
+                f"{duration} - ₹{price}",
                 callback_data=f"buy|{product_name}|{duration}"
             )
 
             markup.add(btn)
 
         bot.edit_message_text(
-            text=f"📦 Select Duration For\n\n{product_name}",
-            chat_id=call.message.chat.id,
-            message_id=call.message.message_id,
+            f"🛒 {product_name}\n\nSelect Duration",
+            call.message.chat.id,
+            call.message.message_id,
             reply_markup=markup
         )
 
-    # BUY PRODUCT
+    # ======================================
+    # BUY OPTION
+    # ======================================
+
     elif data[0] == "buy":
 
         product_name = data[1]
@@ -467,75 +279,81 @@ def callback(call):
 
         markup = types.InlineKeyboardMarkup()
 
-        pay_btn = types.InlineKeyboardButton(
-            text="✅ I Paid",
+        paid_btn = types.InlineKeyboardButton(
+            "✅ I PAID",
             callback_data=f"paid|{product_name}|{duration}"
         )
 
-        markup.add(pay_btn)
+        markup.add(paid_btn)
 
-        bot.edit_message_text(
-            text=
-            f"💸 Payment Details\n\n"
-            f"📦 Product: {product_name}\n"
-            f"⏳ Duration: {duration}\n"
-            f"💰 Price: ₹{price}\n\n"
-            f"🪙 UPI ID: yourupi@paytm\n\n"
-            f"Payment karne ke baad niche button dabao 👇",
-            chat_id=call.message.chat.id,
-            message_id=call.message.message_id,
+        caption = f"""
+💸 PAYMENT DETAILS
+
+📦 Product:
+{product_name}
+
+⏳ Duration:
+{duration}
+
+💰 Price:
+₹{price}
+
+🪙 UPI ID:
+yourupiid@upi
+
+⚠️ Pay And Click I PAID
+"""
+
+        bot.send_photo(
+            call.message.chat.id,
+            QR_IMAGE,
+            caption=caption,
             reply_markup=markup
         )
 
-# AFTER PAYMENT
-# =================================
-if data[0] == "paid":
-    product_name = data[1]
+    # ======================================
+    # PAYMENT SUCCESS
+    # ======================================
 
-    duration = data[2]
+    elif data[0] == "paid":
 
-    pid = products[product_name]["pid"]
+        product_name = data[1]
+        duration = data[2]
 
-    # =================================
-    # API BUY REQUEST
-    # =================================
+        pid = products[product_name]["pid"]
 
-    payload = {
-    "api_key": API_KEY,
-    "action": "buy",
-    "product_id": pid,
-    "duration": duration
-}
+        payload = {
+            "api_key": API_KEY,
+            "action": "buy",
+            "product_id": pid,
+            "duration": duration
+        }
 
-try:
-    response = requests.post(
-        API_URL,
-        data=payload
-    )
+        try:
 
-    result = response.text
-except Exception as e:
-    bot.send_message(
-        call.message.chat.id,
-        f"❌ API ERROR\n\n{e}"
-    )
-available_keys = products[product_name]["keys"][duration]
+            response = requests.post(
+                API_URL,
+                data=payload
+            )
 
-if len(available_keys) == 0:
-    bot.send_message(
-        call.message.chat.id,
-        "❌ Product Out Of Stock"
-    )
-    return
+            result = response.text
 
-key = available_keys.pop(0)
+        except Exception as e:
 
-        # ==============================
-        # SEND TO USER
+            bot.send_message(
+                call.message.chat.id,
+                f"❌ API ERROR\n\n{e}"
+            )
 
-bot.send_message(
-    call.message.chat.id,
-    f"""
+            return
+
+        # ==================================
+        # SEND KEY TO USER
+        # ==================================
+
+        bot.send_message(
+            call.message.chat.id,
+            f"""
 ✅ PAYMENT SUCCESSFUL
 
 📦 Product:
@@ -546,23 +364,19 @@ bot.send_message(
 
 🔑 YOUR KEY:
 
-{key}
-
-📨 API RESPONSE:
-
 {result}
 
-⚠️ Do Not Share Your Key
+⚠️ DO NOT SHARE YOUR KEY
 """
-)
+        )
 
-# =========================
-# ADMIN LOG
-# =========================
+        # ==================================
+        # ADMIN LOG
+        # ==================================
 
-bot.send_message(
-    ADMIN_ID,
-    f"""
+        bot.send_message(
+            ADMIN_ID,
+            f"""
 🛒 NEW ORDER
 
 👤 USER:
@@ -575,12 +389,13 @@ bot.send_message(
 {duration}
 
 🔑 KEY:
-{key}
-📨 API:
 {result}
-
 """
-)
+        )
+
+# ==========================================
+# RUN BOT
+# ==========================================
 
 print("Bot Started Successfully")
 
