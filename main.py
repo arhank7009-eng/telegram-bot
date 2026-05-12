@@ -559,13 +559,13 @@ bot.send_message(
 """
 )
 
-        # ==============================
-        # ADMIN LOG
-        # ==============================
+# =========================
+# ADMIN LOG
+# =========================
 
-        bot.send_message(
-            ADMIN_ID,
-            f"""
+bot.send_message(
+    ADMIN_ID,
+    f"""
 🛒 NEW ORDER
 
 👤 USER:
