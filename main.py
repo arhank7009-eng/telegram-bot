@@ -501,28 +501,27 @@ if data[0] == "paid":
     # =================================
 
     payload = {
-        "api_key": API_KEY,
-        "action": "buy",
-        "product_id": pid,
-        "duration": duration
-    }
-        try:
+    "api_key": API_KEY,
+    "action": "buy",
+    "product_id": pid,
+    "duration": duration
+}
 
-            response = requests.post(
-                API_URL,
-                data=payload
-            )
+try:
+    response = requests.post(
+        API_URL,
+        data=payload
+    )
 
-            result = response.text
+    result = response.text
 
-        except Exception as e:
+except Exception as e:
+    bot.send_message(
+        call.message.chat.id,
+        f"❌ API ERROR\n\n{e}"
+    )
 
-            bot.send_message(
-                call.message.chat.id,
-                f"❌ API ERROR\n\n{e}"
-            )
-
-            return
+    return
 
         # ==================================
         # GET KEY
