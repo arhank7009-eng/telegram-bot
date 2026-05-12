@@ -518,7 +518,7 @@ try:
 except Exception as e:
     bot.send_message(
         call.message.chat.id,
-        f"❌ API ERROR\n\n{e}"
+        f"❌ API ERROR\n\n{e}
     )
     return
 
