@@ -507,6 +507,16 @@ if data[0] == "paid":
     "duration": duration
 }
 
+
+@bot.message_handler(content_types=['photo'])
+def get_file_id(message):
+
+    file_id = message.photo[-1].file_id
+
+    bot.reply_to(message, file_id)
+# ================================
+# RUN BOT
+# ================================
 try:
     response = requests.post(
         API_URL,
@@ -523,9 +533,9 @@ except Exception as e:
     return
 
 
-# ================================
+# ==============================
 # GET KEY
-# ================================
+# ==============================
 
 available_keys = products[product_name]["keys"][duration]
 
@@ -539,9 +549,9 @@ if len(available_keys) == 0:
 key = available_keys.pop(0)
 
 
-# ================================
+# ==============================
 # SEND TO USER
-# ================================
+# ==============================
 
 bot.send_message(
     call.message.chat.id,
@@ -551,7 +561,7 @@ bot.send_message(
 📦 Product:
 {product_name}
 
-⌛ Duration:
+⏳ Duration:
 {duration}
 
 🔑 YOUR KEY:
@@ -566,13 +576,14 @@ bot.send_message(
 """
 )
 
-        # ==================================
-        # ADMIN LOG
-        # ==================================
 
-        bot.send_message(
-            ADMIN_ID,
-            f"""
+# ==============================
+# ADMIN LOG
+# ==============================
+
+bot.send_message(
+    ADMIN_ID,
+    f"""
 🛒 NEW ORDER
 
 👤 USER:
@@ -590,17 +601,7 @@ bot.send_message(
 📨 API:
 {result}
 """
-        )
-@bot.message_handler(content_types=['photo'])
-def get_file_id(message):
-
-    file_id = message.photo[-1].file_id
-
-    bot.reply_to(message, file_id)
-# ================================
-# RUN BOT
-# ================================
-
+)
 print("Bot Started Successfully")
 
 bot.infinity_polling(skip_pending=True)
