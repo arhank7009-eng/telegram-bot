@@ -514,14 +514,11 @@ try:
     )
 
     result = response.text
-
 except Exception as e:
     bot.send_message(
         call.message.chat.id,
         f"❌ API ERROR\n\n{e}"
     )
-    return
-
 available_keys = products[product_name]["keys"][duration]
 
 if len(available_keys) == 0:
