@@ -596,11 +596,10 @@ def get_file_id(message):
     file_id = message.photo[-1].file_id
 
     bot.reply_to(message, file_id)
-# ==========================================
+# ================================
 # RUN BOT
-# ==========================================
+# ================================
 
-keep_alive()
 print("Bot Started Successfully")
 
 bot.infinity_polling(skip_pending=True)
