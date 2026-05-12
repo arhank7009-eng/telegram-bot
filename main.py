@@ -524,14 +524,14 @@ except Exception as e:
 
 available_keys = products[product_name]["keys"][duration]
 
-        if len(available_keys) == 0:
-            bot.send_message(
-                call.message.chat.id,
-                "❌ Product Out Of Stock"
-            )
-            return
+if len(available_keys) == 0:
+    bot.send_message(
+        call.message.chat.id,
+        "❌ Product Out Of Stock"
+    )
+    return
 
-        key = available_keys.pop(0)
+key = available_keys.pop(0)
 
         # ==============================
         # SEND TO USER
