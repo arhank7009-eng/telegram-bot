@@ -74,12 +74,11 @@ products = {
     "7 Days Nonroot": [
         "PRIME-7D-001"
     ],
-
-    "10 Days Nonroot": [
+"10 Days Nonroot": [
         "PRIME-10D-001"
     ]
-}
     }
+},
 
     "DRIPCLIENT NONROOT FF": {
         "pid": "62",
