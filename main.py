@@ -515,7 +515,12 @@ try:
 
     result = response.text
 
-
+except Exception as e:
+    bot.send_message(
+        call.message.chat.id,
+        f"❌ API ERROR\n\n{e}"
+    )
+    return
         # ==============================
         # GET KEY
         # ==============================
