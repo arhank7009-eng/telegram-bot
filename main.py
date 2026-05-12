@@ -521,11 +521,8 @@ except Exception as e:
         f"❌ API ERROR\n\n{e}"
     )
     return
-        # ==============================
-        # GET KEY
-        # ==============================
 
-        available_keys = products[product_name]["keys"][duration]
+available_keys = products[product_name]["keys"][duration]
 
         if len(available_keys) == 0:
             bot.send_message(
