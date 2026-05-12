@@ -584,11 +584,12 @@ try:
 
 🔑 KEY:
 {key}
-
 📨 API:
 {result}
+
 """
-        )
+)
+
 print("Bot Started Successfully")
 
 bot.infinity_polling(skip_pending=True)
