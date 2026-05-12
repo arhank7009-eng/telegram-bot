@@ -520,14 +520,14 @@ except Exception as e:
         call.message.chat.id,
         f"❌ API ERROR\n\n{e}"
     )
-
     return
 
-        # ==================================
-        # GET KEY
-        # ==================================
 
-        available_keys = products[product_name]["keys"][duration]
+# ================================
+# GET KEY
+# ================================
+
+available_keys = products[product_name]["keys"][duration]
 
 if len(available_keys) == 0:
     bot.send_message(
@@ -537,19 +537,21 @@ if len(available_keys) == 0:
     return
 
 key = available_keys.pop(0)
-        # ==================================
-        # SEND TO USER
-        # ==================================
 
-        bot.send_message(
-            call.message.chat.id,
-            f"""
+
+# ================================
+# SEND TO USER
+# ================================
+
+bot.send_message(
+    call.message.chat.id,
+    f"""
 ✅ PAYMENT SUCCESSFUL
 
 📦 Product:
 {product_name}
 
-⏳ Duration:
+⌛ Duration:
 {duration}
 
 🔑 YOUR KEY:
@@ -562,7 +564,7 @@ key = available_keys.pop(0)
 
 ⚠️ Do Not Share Your Key
 """
-        )
+)
 
         # ==================================
         # ADMIN LOG
