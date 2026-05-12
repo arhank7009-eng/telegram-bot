@@ -508,19 +508,13 @@ if data[0] == "paid":
 }
 
 try:
-            response = requests.post(
-                API_URL,
-                data=payload
-            )
+    response = requests.post(
+        API_URL,
+        data=payload
+    )
 
-            result = response.text
+    result = response.text
 
-        except Exception as e:
-            bot.send_message(
-                call.message.chat.id,
-                f"❌ API ERROR\n\n{e}"
-            )
-            return
 
         # ==============================
         # GET KEY
